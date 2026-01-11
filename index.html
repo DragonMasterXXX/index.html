@@ -28,7 +28,7 @@
             const p = document.getElementById('pass').value;
             // Case-sensitive check
             if (u === "HackerDragon" && p === "Hacker666") {
-                window.location.href = "admin.html";
+                window.location.href = "/admin.html";
             } else {
                 document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
                 setTimeout(() => document.getElementById('error').innerText = "", 2000);
