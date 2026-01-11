@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>SYSTEM_ACCESS_PORTAL</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Relative path fix for GitHub Pages -->
+    <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body class="hacker-body">
@@ -25,6 +26,7 @@
         function login() {
             const u = document.getElementById('user').value;
             const p = document.getElementById('pass').value;
+            // Case-sensitive check
             if (u === "HackerDragon" && p === "Hacker666") {
                 window.location.href = "admin.html";
             } else {
