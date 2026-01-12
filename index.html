@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>SYSTEM_ACCESS_PORTAL</title>
-    <!-- Relative path fix for GitHub Pages -->
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body.hacker-body { 
+            background: #050505; color: #00ff41; 
+            font-family: 'Share Tech Mono', monospace; 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; margin: 0; overflow: hidden; 
+        }
+        .login-box { border: 1px solid #00ff41; padding: 40px; box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); text-align: center;}
+        .glitch { font-size: 24px; font-weight: bold; position: relative; margin-bottom: 20px; letter-spacing: 3px; }
+        .input-area { margin: 15px 0; display: flex; align-items: center; }
+        .prompt { color: #00ff41; margin-right: 10px; }
+        input { background: transparent; border: none; border-bottom: 1px solid #00ff41; color: #00ff41; outline: none; padding: 5px; width: 200px; font-family: inherit; }
+        .login-btn { 
+            background: #00ff41; color: #000; border: none; 
+            padding: 10px 25px; cursor: pointer; font-family: inherit; 
+            font-weight: bold; margin-top: 20px; transition: 0.3s;
+        }
+        .login-btn:hover { background: #00cc33; box-shadow: 0 0 10px #00ff41; }
+        .error-msg { color: #ff4444; margin-top: 15px; font-size: 12px; height: 15px; }
+    </style>
 </head>
 <body class="hacker-body">
     <div class="login-box">
-        <div class="glitch" data-text="SYSTEM LOGIN">SYSTEM LOGIN</div>
+        <div class="glitch">SYSTEM LOGIN</div>
         <div class="input-area">
             <span class="prompt">> USERNAME:</span>
             <input type="text" id="user" autocomplete="off">
@@ -24,20 +42,16 @@
 
     <script>
         function login() {
-    const u = document.getElementById('user').value;
-    const p = document.getElementById('pass').value;
-
-    if (u === "HackerDragon" && p === "Hacker666") {
-        // This calculates the correct path by removing the current filename 
-        // and appending admin.html correctly.
-        const currentPath = window.location.pathname;
-        const newPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1) + "admin.html";
-        window.location.href = newPath;
-    } else {
-        document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
-        setTimeout(() => document.getElementById('error').innerText = "", 2000);
-    }
-}
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            if (u === "HackerDragon" && p === "Hacker666") {
+                // Fixes the URL /index.html/admin.html issue
+                window.location.href = window.location.href.replace(/index\.html.*/, "") + "admin.html";
+            } else {
+                document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
+                setTimeout(() => document.getElementById('error').innerText = "", 2000);
+            }
+        }
     </script>
 </body>
 </html>
