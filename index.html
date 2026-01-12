@@ -24,20 +24,20 @@
         <div id="error" class="error-msg"></div>
     </div>
     <script>
-        function login() {
-            const u = document.getElementById('user').value;
-            const p = document.getElementById('pass').value;
-            if (u === "HackerDragon" && p === "Hacker666") {
-    localStorage.setItem("systemAccess", "granted");
+function login() {
+  const u = document.getElementById('user').value;
+  const p = document.getElementById('pass').value;
 
-    let path = window.location.pathname;
-    let newPath = path.substring(0, path.lastIndexOf('/') + 1) + "admin.html";
-    window.location.href = newPath;
-            } else {
-                document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
-                setTimeout(() => document.getElementById('error').innerText = "", 2000);
-            }
-        }
-    </script>
+  if (u === "HackerDragon" && p === "Hacker666") {
+    localStorage.setItem("systemAccess", "granted");
+    window.location.href = "/admin.html";
+  } else {
+    document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
+    setTimeout(() => {
+      document.getElementById('error').innerText = "";
+    }, 2000);
+  }
+}
+</script>
 </body>
 </html>
