@@ -24,16 +24,20 @@
 
     <script>
         function login() {
-            const u = document.getElementById('user').value;
-            const p = document.getElementById('pass').value;
-            // Case-sensitive check
-            if (u === "HackerDragon" && p === "Hacker666") {
-                window.location.href = "/admin.html";
-            } else {
-                document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
-                setTimeout(() => document.getElementById('error').innerText = "", 2000);
-            }
-        }
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
+
+    if (u === "HackerDragon" && p === "Hacker666") {
+        // This calculates the correct path by removing the current filename 
+        // and appending admin.html correctly.
+        const currentPath = window.location.pathname;
+        const newPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1) + "admin.html";
+        window.location.href = newPath;
+    } else {
+        document.getElementById('error').innerText = "ERROR: INVALID_CREDENTIALS";
+        setTimeout(() => document.getElementById('error').innerText = "", 2000);
+    }
+}
     </script>
 </body>
 </html>
